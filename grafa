@@ -1,0 +1,181 @@
+{
+  "dashboard": {
+    "id": null,
+    "title": "Java Application Monitoring Dashboard",
+    "panels": [
+      {
+        "title": "Response Time",
+        "type": "graph",
+        "datasource": "Elasticsearch",
+        "targets": [
+          {
+            "query": "apm.transaction.duration.us.percentiles95{service:your_service_name_here, environment:production}"
+          }
+        ],
+        "options": {
+          "legend": {
+            "show": true
+          }
+        }
+      },
+      {
+        "title": "Throughput",
+        "type": "graph",
+        "datasource": "Elasticsearch",
+        "targets": [
+          {
+            "query": "apm.transaction.duration.count{service:your_service_name_here, environment:production}"
+          }
+        ],
+        "options": {
+          "legend": {
+            "show": true
+          }
+        }
+      },
+      {
+        "title": "Error Rate",
+        "type": "graph",
+        "datasource": "Elasticsearch",
+        "targets": [
+          {
+            "query": "apm.error.count{service:your_service_name_here, environment:production}"
+          }
+        ],
+        "options": {
+          "legend": {
+            "show": true
+          }
+        }
+      },
+      {
+        "title": "Apdex Score",
+        "type": "singlestat",
+        "datasource": "Elasticsearch",
+        "targets": [
+          {
+            "query": "apm.transaction.apdex{service:your_service_name_here, environment:production}"
+          }
+        ]
+      },
+      {
+        "title": "JVM CPU Usage",
+        "type": "graph",
+        "datasource": "Elasticsearch",
+        "targets": [
+          {
+            "query": "system.cpu.total.pct{service:your_service_name_here, environment:production}"
+          }
+        ],
+        "options": {
+          "legend": {
+            "show": true
+          }
+        }
+      },
+      {
+        "title": "Memory Usage",
+        "type": "graph",
+        "datasource": "Elasticsearch",
+        "targets": [
+          {
+            "query": "jvm.memory.heap.used{service:your_service_name_here, environment:production}"
+          }
+        ],
+        "options": {
+          "legend": {
+            "show": true
+          }
+        }
+      },
+      {
+        "title": "Database Queries",
+        "type": "graph",
+        "datasource": "Elasticsearch",
+        "targets": [
+          {
+            "query": "your_database_query_metric_here{service:your_service_name_here, environment:production}"
+          }
+        ],
+        "options": {
+          "legend": {
+            "show": true
+          }
+        }
+      },
+      {
+        "title": "External Service Calls",
+        "type": "graph",
+        "datasource": "Elasticsearch",
+        "targets": [
+          {
+            "query": "your_external_service_metric_here{service:your_service_name_here, environment:production}"
+          }
+        ],
+        "options": {
+          "legend": {
+            "show": true
+          }
+        }
+      },
+      {
+        "title": "HTTP Status Codes",
+        "type": "graph",
+        "datasource": "Elasticsearch",
+        "targets": [
+          {
+            "query": "http.response.status_code{service:your_service_name_here, environment:production}"
+          }
+        ],
+        "options": {
+          "legend": {
+            "show": true
+          }
+        }
+      },
+      {
+        "title": "Transaction Traces",
+        "type": "graph",
+        "datasource": "Elasticsearch",
+        "targets": [
+          {
+            "query": "apm.transaction.duration.us{service:your_service_name_here, environment:production}"
+          }
+        ],
+        "options": {
+          "legend": {
+            "show": true
+          }
+        }
+      }
+    ],
+    "time": {
+      "from": "now-24h",
+      "to": "now"
+    },
+    "timepicker": {
+      "now": true,
+      "nowDelay": "10m",
+      "refresh_intervals": [
+        "5s",
+        "10s",
+        "30s",
+        "1m",
+        "5m",
+        "15m",
+        "30m",
+        "1h",
+        "2h",
+        "1d"
+      ]
+    },
+    "templating": [],
+    "annotations": {
+      "list": []
+    },
+    "refresh": "5s",
+    "schemaVersion": 22,
+    "version": 2,
+    "links": []
+  }
+}
