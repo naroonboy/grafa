@@ -1,0 +1,15 @@
+curl -X POST \
+  http://your-apm-server:8200/v1/transactions/_search \
+  -H 'Content-Type: application/json' \
+  -d '{
+  "query": {
+    "bool": {
+      "filter": [
+        { "range": { "@timestamp": { "gte": "now-1h" } } },
+        { "term": { "transaction.name": "YOUR_TRANSACTION_NAME" } }
+      ]
+    }
+  },
+  "size": 1,
+  "sort": [{"@timestamp": "desc"}]
+}'
